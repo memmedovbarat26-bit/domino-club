@@ -1,1 +1,150 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Domino Club</title>
 
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#101827;
+  color:white;
+  text-align:center;
+}
+.header{
+  background:#182438;
+  padding:20px;
+  font-size:28px;
+  font-weight:bold;
+}
+.container{
+  max-width:500px;
+  margin:auto;
+  padding:20px;
+}
+.card{
+  background:#1d2a3d;
+  padding:20px;
+  margin-top:20px;
+  border-radius:18px;
+}
+.balance{
+  font-size:25px;
+  color:#4ade80;
+  margin:15px;
+}
+button{
+  width:100%;
+  padding:15px;
+  margin:8px 0;
+  border:0;
+  border-radius:12px;
+  background:#22c55e;
+  color:white;
+  font-size:18px;
+  font-weight:bold;
+}
+button:hover{background:#16a34a}
+input{
+  width:100%;
+  padding:14px;
+  margin:7px 0;
+  border-radius:10px;
+  border:0;
+  font-size:16px;
+}
+.domino{
+  display:inline-flex;
+  background:white;
+  color:black;
+  width:75px;
+  height:120px;
+  margin:5px;
+  border-radius:10px;
+  flex-direction:column;
+  justify-content:space-around;
+  font-size:30px;
+  font-weight:bold;
+}
+.hidden{display:none}
+.small{color:#aab5c5}
+</style>
+</head>
+
+<body>
+
+<div class="header">🁫 DOMINO CLUB</div>
+
+<div class="container">
+
+<div id="login" class="card">
+<h2>Giriş</h2>
+<input id="username" placeholder="İstifadəçi adı">
+<input id="password" type="password" placeholder="Şifrə">
+<button onclick="login()">Daxil ol</button>
+<p class="small">Domino Club-a xoş gəlmisiniz!</p>
+</div>
+
+<div id="club" class="hidden">
+
+<div class="card">
+<h2>👤 Hesab</h2>
+<p id="user"></p>
+<div class="balance">Balans: <span id="balance">0.00</span> ₼</div>
+
+<button onclick="addBalance()">💳 Balans artır</button>
+<button onclick="startGame()">🁫 Domino oyununa başla</button>
+</div>
+
+<div id="game" class="card hidden">
+<h2>🁫 Domino Oyunu</h2>
+
+<div>
+<div class="domino">6<br>●●●</div>
+<div class="domino">3<br>●●●</div>
+<div class="domino">5<br>●●●●●</div>
+</div>
+
+<button onclick="play()">Daşı oyna</button>
+<p id="message">Oyuna başlamaq üçün düyməyə bas.</p>
+</div>
+
+</div>
+
+</div>
+
+<script>
+let balance = 0;
+
+function login(){
+  let name=document.getElementById("username").value;
+
+  if(name===""){
+    alert("İstifadəçi adını yaz!");
+    return;
+  }
+
+  document.getElementById("login").classList.add("hidden");
+  document.getElementById("club").classList.remove("hidden");
+  document.getElementById("user").innerText="İstifadəçi: "+name;
+}
+
+function addBalance(){
+  alert("Kartla balans artırma sistemi növbəti mərhələdə qoşulacaq.");
+}
+
+function startGame(){
+  document.getElementById("game").classList.remove("hidden");
+}
+
+function play(){
+  document.getElementById("message").innerText=
+  "Daş oynadıldı! 🁫";
+}
+</script>
+
+</body>
+</html>
